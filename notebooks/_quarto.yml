@@ -1,0 +1,13 @@
+project:
+  type: website
+  output-dir: ../docs
+  render:
+    - llm_analysis_howto.qmd
+
+format:
+  html:
+    copy-code: true
+    page-layout: full
+    theme: cosmo
+    css:
+      - styles.css

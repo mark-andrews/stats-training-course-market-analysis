@@ -23,7 +23,7 @@ source .venv/bin/activate  # Linux or MacOS
 
 The required packages can be installed with
 ```bash
-pip install -r requirements.txt
+pip install -r include/requirements.txt
 ```
 
 One minor annoyance is the installation of the Gecko driver for using the Selenium Firefox webdriver.
@@ -52,3 +52,8 @@ This script uses the list of links obtained from the above `get_links_to_all_pos
 ```bash
 python allstat.py get_training_course_posts --posts_list posts_19_feb.json --output_file training_course_posts.json --verbose
 ```
+
+## Analysing posts using an LLM
+
+The script [`llm_analysis.R`](llm_analysis.R) provides code for the analysis of posts using an LLM such as ChatGPT or Llama.
+More information and guidance can be found in [this guide](https://mark-andrews.github.io/stats-training-course-market-analysis/llm_analysis_howto.html).

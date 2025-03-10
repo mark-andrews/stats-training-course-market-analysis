@@ -1,0 +1,6 @@
+.cell-output {
+    border: 1px solid #ccc; /* Add a light gray border */
+    background-color: #f9f9f9; /* Add a light gray background */
+    padding: 10px; /* Add some padding for spacing */
+    border-radius: 5px; /* rounded corners */
+  }
