@@ -85,11 +85,11 @@ result <- client$chat(post)
 
 ## Analysing ALLSTAT posts
 
-The file [`allstat_training_course_posts.json.bz2`]({{< var github >}}/data/allstat_training_course_posts.json.bz2) is a compressed json file that contains all the posts to the [ALLSTAT](https://www.jiscmail.ac.uk/cgi-bin/webadmin?A0=allstat) mailing list since 1998 that contain the term "training" or "course" in their title.
+The file [`allstat_training_course_posts.json.bz2`]({{< var github >}}/blob/main/data/allstat_training_course_posts.json.bz2) is a compressed json file that contains all the posts to the [ALLSTAT](https://www.jiscmail.ac.uk/cgi-bin/webadmin?A0=allstat) mailing list since 1998 that contain the term "training" or "course" in their title.
 
-The script [`llm_analysis.R`]({{< var github >}}/llm_analysis.R) contains code, including a number of helper functions, to iterate through all of these posts, extract information about the training courses, and post-process and format the results.
+The script [`llm_analysis.R`]({{< var github >}}/blob/main/llm_analysis.R) contains code, including a number of helper functions, to iterate through all of these posts, extract information about the training courses, and post-process and format the results.
 
-The exact instructions used to extract the information are in the file [`instructions.md`]({{< var github >}}/instructions.md).
+The exact instructions used to extract the information are in the file [`instructions.md`]({{< var github >}}/blob/main/instructions.md).
 In these instructions, we ask the LLM to answer the following questions:
 
   - In one line, what is this course about?
@@ -108,7 +108,7 @@ An example json object result is as follows:
 cat(readRDS(here::here('data/allstat_training_course_posts_ollama.Rds'))$raw[[568]])
 ```
 
-The raw output from the LLM and the post-processed and formatted results are stored in [data/allstat_training_course_posts_chatgpt.Rds]({{< var github >}}/data/allstat_training_course_posts_chatgpt.Rds) (ChatGPT based analysis) and [data/allstat_training_course_posts_ollama.Rds]({{< var github >}}/data/allstat_training_course_posts_ollama.Rds) (Llama 3.3 based analysis).
+The raw output from the LLM and the post-processed and formatted results are stored in [data/allstat_training_course_posts_chatgpt.Rds]({{< var github >}}/blob/main/data/allstat_training_course_posts_chatgpt.Rds) (ChatGPT based analysis) and [data/allstat_training_course_posts_ollama.Rds]({{< var github >}}/blob/main/data/allstat_training_course_posts_ollama.Rds) (Llama 3.3 based analysis).
 
 ## Some results
 

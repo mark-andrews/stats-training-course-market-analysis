@@ -200,9 +200,9 @@ Because their relationship was not significant.</code></pre>
 </section>
 <section id="analysing-allstat-posts" class="level2">
 <h2 class="anchored" data-anchor-id="analysing-allstat-posts">Analysing ALLSTAT posts</h2>
-<p>The file <a href="https://github.com/mark-andrews/stats-training-course-market-analysis/data/allstat_training_course_posts.json.bz2"><code>allstat_training_course_posts.json.bz2</code></a> is a compressed json file that contains all the posts to the <a href="https://www.jiscmail.ac.uk/cgi-bin/webadmin?A0=allstat">ALLSTAT</a> mailing list since 1998 that contain the term “training” or “course” in their title.</p>
-<p>The script <a href="https://github.com/mark-andrews/stats-training-course-market-analysis/llm_analysis.R"><code>llm_analysis.R</code></a> contains code, including a number of helper functions, to iterate through all of these posts, extract information about the training courses, and post-process and format the results.</p>
-<p>The exact instructions used to extract the information are in the file <a href="https://github.com/mark-andrews/stats-training-course-market-analysis/instructions.md"><code>instructions.md</code></a>. In these instructions, we ask the LLM to answer the following questions:</p>
+<p>The file <a href="https://github.com/mark-andrews/stats-training-course-market-analysis/blob/main/data/allstat_training_course_posts.json.bz2"><code>allstat_training_course_posts.json.bz2</code></a> is a compressed json file that contains all the posts to the <a href="https://www.jiscmail.ac.uk/cgi-bin/webadmin?A0=allstat">ALLSTAT</a> mailing list since 1998 that contain the term “training” or “course” in their title.</p>
+<p>The script <a href="https://github.com/mark-andrews/stats-training-course-market-analysis/blob/main/llm_analysis.R"><code>llm_analysis.R</code></a> contains code, including a number of helper functions, to iterate through all of these posts, extract information about the training courses, and post-process and format the results.</p>
+<p>The exact instructions used to extract the information are in the file <a href="https://github.com/mark-andrews/stats-training-course-market-analysis/blob/main/instructions.md"><code>instructions.md</code></a>. In these instructions, we ask the LLM to answer the following questions:</p>
 <ul>
 <li>In one line, what is this course about?</li>
 <li>In one word or term, what is the course about? For example, “causal inference”, “general linear models”, “Bayesian methods”.</li>
@@ -230,7 +230,7 @@ Because their relationship was not significant.</code></pre>
 }</code></pre>
 </div>
 </div>
-<p>The raw output from the LLM and the post-processed and formatted results are stored in <a href="https://github.com/mark-andrews/stats-training-course-market-analysis/data/allstat_training_course_posts_chatgpt.Rds">data/allstat_training_course_posts_chatgpt.Rds</a> (ChatGPT based analysis) and <a href="https://github.com/mark-andrews/stats-training-course-market-analysis/data/allstat_training_course_posts_ollama.Rds">data/allstat_training_course_posts_ollama.Rds</a> (Llama 3.3 based analysis).</p>
+<p>The raw output from the LLM and the post-processed and formatted results are stored in <a href="https://github.com/mark-andrews/stats-training-course-market-analysis/blob/main/data/allstat_training_course_posts_chatgpt.Rds">data/allstat_training_course_posts_chatgpt.Rds</a> (ChatGPT based analysis) and <a href="https://github.com/mark-andrews/stats-training-course-market-analysis/blob/main/data/allstat_training_course_posts_ollama.Rds">data/allstat_training_course_posts_ollama.Rds</a> (Llama 3.3 based analysis).</p>
 </section>
 <section id="some-results" class="level2">
 <h2 class="anchored" data-anchor-id="some-results">Some results</h2>
