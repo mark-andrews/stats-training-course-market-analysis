@@ -11,6 +11,7 @@ This module can be used as a command line script.
 
 import platform
 from pathlib import Path
+import bz2
 import os
 import ipdb
 import sys
@@ -272,7 +273,7 @@ if __name__ == "__main__":
         "get_links_to_all_posts", help="Get list of all posts"
     )
     parser_get_posts_lists.add_argument(
-        "--output_file", required=True, help="Output json file for saving list of posts"
+        "--outfile", required=True, help="Output json file for saving list of posts"
     )
     parser_get_posts_lists.add_argument(
         "--verbose", action="store_true", help="Print out each ALLSTAT month"
@@ -287,7 +288,7 @@ if __name__ == "__main__":
         "--posts_list", required=True, help="json file with list of URLs of all posts"
     )
     parser_get_training_posts.add_argument(
-        "--output_file", required=True, help="Output json file for saving posts"
+        "--outfile", required=True, help="Output json file for saving posts"
     )
     parser_get_training_posts.add_argument(
         "--verbose", action="store_true", help="Print out each matching post's title"
@@ -298,12 +299,12 @@ if __name__ == "__main__":
     if args.command == "get_links_to_all_posts":
         list_of_all_posts = get_links_to_all_posts(args.verbose)
 
-        with open(args.output_file, "w") as f:
-            json.dump(list_of_all_posts, f, indent=4)
+        with bz2.open(args.outfile, "wt", encoding="utf-8") as f:
+            json.dump(list_of_all_posts, f, indent=4, ensure_ascii=False)
 
     elif args.command == "get_training_course_posts":
 
-        with open(args.posts_list, "r") as f:
+        with bz2.open(args.posts_list, "rt", encoding='utf-8') as f:
             post_list = json.load(f)
 
         posts = []
@@ -321,5 +322,5 @@ if __name__ == "__main__":
                         )
                     )
 
-                    with open(args.output_file, "w") as f:
-                        json.dump(posts, f, indent=4)
+                    with bz2.open(args.outfile, "wt", encoding='utf-8') as f:
+                        json.dump(posts, f, indent=4, ensure_ascii=False)
