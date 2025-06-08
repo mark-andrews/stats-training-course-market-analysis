@@ -134,8 +134,16 @@ tess_posts <- read_json_bz2("data/tess_courses.json.bz2")[1:N]
 
 # Process allstat posts ---------------------------------------------------
 
-allstat_results <- process_posts(allstat_posts, instructions = instructions, llm = LLM, database = "allstat", backup_file = "tmp/allstat_results_backup.Rds")
-allstat_results_df <- postprocess_results(allstat_results, allstat_posts, database = "allstat")
+allstat_results <- process_posts(allstat_posts,
+  instructions = instructions,
+  llm = LLM,
+  database = "allstat",
+  backup_file = "tmp/allstat_results_backup.Rds"
+)
+allstat_results_df <- postprocess_results(allstat_results,
+  allstat_posts,
+  database = "allstat"
+)
 write_results(allstat_results, allstat_results_df, "allstat", LLM)
 
 # Process TESS posts ------------------------------------------------------
@@ -148,11 +156,27 @@ tess_first_pass_instructions <- str_c(
   Answer "Yes" or "No" or "Not Sure" only.',
   collapse = "\n"
 )
-first_pass_tess_results <- process_posts(tess_posts, instructions = tess_first_pass_instructions, llm = LLM, database = "tess", backup_file = "tmp/tess_first_pass_results_backup.Rds")
-tess_posts_filtered <- tess_posts[map_lgl(first_pass_tess_results, ~ str_detect(., "^Yes.*"))]
+first_pass_tess_results <- process_posts(tess_posts,
+  instructions = tess_first_pass_instructions,
+  llm = LLM,
+  database = "tess",
+  backup_file = "tmp/tess_first_pass_results_backup.Rds"
+)
 
-tess_results <- process_posts(tess_posts, instructions = instructions, llm = LLM, database = "tess", backup_file = "tmp/tess_results_backup.Rds")
-tess_results_df <- postprocess_results(tess_results, tess_posts_filtered, database = "tess")
+tess_posts_filtered <- tess_posts[
+  map_lgl(first_pass_tess_results, ~ str_detect(., "^Yes.*"))
+]
+
+tess_results <- process_posts(tess_posts_filtered,
+  instructions = instructions,
+  llm = LLM,
+  database = "tess",
+  backup_file = "tmp/tess_results_backup.Rds"
+)
+tess_results_df <- postprocess_results(tess_results,
+  tess_posts_filtered,
+  database = "tess"
+)
 write_results(tess_results, tess_results_df, "tess", LLM)
 
 
