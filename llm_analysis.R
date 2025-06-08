@@ -141,7 +141,13 @@ write_results(allstat_results, allstat_results_df, "allstat", LLM)
 # Process TESS posts ------------------------------------------------------
 
 # For TESS, we first filter out posts that do not appear at all related to statistics
-tess_first_pass_instructions <- readLines("tess_first_pass_instructions.md") |> str_c(collapse = "\n")
+tess_first_pass_instructions <- str_c(
+  'I am going to give you a text that is a post to a mailing list.
+  The title of the post is the first line, indicated by the # symbol.
+  Is this text describing a statistics training course or not?
+  Answer "Yes" or "No" or "Not Sure" only.',
+  collapse = "\n"
+)
 first_pass_tess_results <- process_posts(tess_posts, instructions = tess_first_pass_instructions, llm = LLM, database = "tess", backup_file = "tmp/tess_first_pass_results_backup.Rds")
 tess_posts_filtered <- tess_posts[map_lgl(first_pass_tess_results, ~ str_detect(., "^Yes.*"))]
 
