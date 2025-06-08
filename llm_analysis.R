@@ -183,5 +183,5 @@ write_results(tess_results, tess_results_df, "tess", LLM)
 # Process NCRM ------------------------------------------------------------
 
 ncrm_results <- process_posts(ncrm_posts, instructions = instructions, llm = LLM, database = "ncrm", backup_file = "tmp/results_backup.Rds")
-results_df <- postprocess_results(ncrm_results, ncrm_posts, database = "ncrm")
+ncrm_results_df <- postprocess_results(ncrm_results, ncrm_posts, database = "ncrm")
 write_results(ncrm_results, ncrm_results_df, "tess", LLM)
