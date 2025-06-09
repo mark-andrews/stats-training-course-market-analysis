@@ -1,0 +1,156 @@
+major_topic,subtopic
+Foundations & Core Theory,probability theory
+Foundations & Core Theory,descriptive statistics
+Foundations & Core Theory,exploratory data analysis
+Foundations & Core Theory,statistical inference
+Foundations & Core Theory,frequentist methods
+Foundations & Core Theory,Bayesian methods
+Foundations & Core Theory,decision theory
+Foundations & Core Theory,information theory
+Foundations & Core Theory,sampling theory
+Foundations & Core Theory,robustness & non-parametrics
+Foundations & Core Theory,"resampling methods (bootstrap, permutation tests)"
+Foundations & Core Theory,experimental design
+General Regression & Linear Models,simple linear regression
+General Regression & Linear Models,multiple regression
+General Regression & Linear Models,generalized linear models
+General Regression & Linear Models,generalized additive models
+General Regression & Linear Models,quantile regression
+General Regression & Linear Models,robust regression
+General Regression & Linear Models,ridge regression
+General Regression & Linear Models,lasso & elastic-net
+"Hierarchical, Mixed & Latent-Variable Models",mixed effects models
+"Hierarchical, Mixed & Latent-Variable Models",multilevel models
+"Hierarchical, Mixed & Latent-Variable Models",hierarchical Bayesian models
+"Hierarchical, Mixed & Latent-Variable Models",random effects models
+"Hierarchical, Mixed & Latent-Variable Models",structural equation modelling
+"Hierarchical, Mixed & Latent-Variable Models",latent variable models
+"Hierarchical, Mixed & Latent-Variable Models",factor analysis
+"Hierarchical, Mixed & Latent-Variable Models",item response theory
+"Hierarchical, Mixed & Latent-Variable Models",latent class analysis
+"Hierarchical, Mixed & Latent-Variable Models",growth-curve modelling
+Time-Related Models,time-series analysis
+Time-Related Models,ARIMA models
+Time-Related Models,state-space models
+Time-Related Models,Kalman filtering
+Time-Related Models,vector autoregression
+Time-Related Models,seasonal adjustment
+Time-Related Models,forecasting methods
+Time-Related Models,longitudinal data analysis
+Time-Related Models,panel data econometrics
+Time-Related Models,survival analysis
+Time-Related Models,event-history analysis
+Time-Related Models,recurrent event modelling
+Spatial & Spatiotemporal,spatial statistics
+Spatial & Spatiotemporal,geostatistics & kriging
+Spatial & Spatiotemporal,spatial econometrics
+Spatial & Spatiotemporal,spatial point processes
+Spatial & Spatiotemporal,disease mapping
+Spatial & Spatiotemporal,spatiotemporal models
+Causal Inference & Policy Evaluation,causal diagrams & DAGs
+Causal Inference & Policy Evaluation,potential outcomes framework
+Causal Inference & Policy Evaluation,randomized controlled trials
+Causal Inference & Policy Evaluation,propensity score methods
+Causal Inference & Policy Evaluation,inverse probability weighting
+Causal Inference & Policy Evaluation,instrumental variables
+Causal Inference & Policy Evaluation,regression discontinuity designs
+Causal Inference & Policy Evaluation,difference-in-differences
+Causal Inference & Policy Evaluation,synthetic control methods
+Causal Inference & Policy Evaluation,mediation analysis
+Machine Learning & AI,supervised learning
+Machine Learning & AI,unsupervised learning
+Machine Learning & AI,deep learning
+Machine Learning & AI,reinforcement learning
+Machine Learning & AI,transfer learning
+Machine Learning & AI,ensemble methods
+Machine Learning & AI,decision trees
+Machine Learning & AI,random forests
+Machine Learning & AI,gradient boosting
+Machine Learning & AI,support vector machines
+Machine Learning & AI,k-nearest neighbours
+Machine Learning & AI,naïve Bayes classifiers
+Machine Learning & AI,neural networks
+Machine Learning & AI,convolutional neural networks
+Machine Learning & AI,recurrent neural networks
+Machine Learning & AI,transformers & attention
+Machine Learning & AI,autoencoders
+Machine Learning & AI,"generative models (GANs, VAEs)"
+Unsupervised & Dimension Reduction,principal component analysis
+Unsupervised & Dimension Reduction,independent component analysis
+Unsupervised & Dimension Reduction,non-negative matrix factorisation
+Unsupervised & Dimension Reduction,t-SNE & UMAP
+Unsupervised & Dimension Reduction,manifold learning
+Unsupervised & Dimension Reduction,clustering analysis
+Unsupervised & Dimension Reduction,k-means clustering
+Unsupervised & Dimension Reduction,hierarchical clustering
+Unsupervised & Dimension Reduction,density-based clustering
+Unsupervised & Dimension Reduction,"topic modelling (LDA, NMF)"
+Simulation & Computational Methods,Monte Carlo simulation
+Simulation & Computational Methods,Markov-chain Monte Carlo
+Simulation & Computational Methods,Gibbs sampling
+Simulation & Computational Methods,Hamiltonian Monte Carlo
+Simulation & Computational Methods,importance sampling
+Simulation & Computational Methods,agent-based simulation
+Simulation & Computational Methods,discrete-event simulation
+Simulation & Computational Methods,"Bayesian computation (Stan, JAGS, BUGS)"
+Simulation & Computational Methods,optimisation algorithms
+Simulation & Computational Methods,EM algorithm
+Simulation & Computational Methods,stochastic optimisation
+Meta-Research & Evidence Synthesis,meta-analysis
+Meta-Research & Evidence Synthesis,network meta-analysis
+Meta-Research & Evidence Synthesis,systematic reviews
+Meta-Research & Evidence Synthesis,publication bias analysis
+Meta-Research & Evidence Synthesis,evidence synthesis
+Data Quality & Missingness,missing data mechanisms
+Data Quality & Missingness,multiple imputation
+Data Quality & Missingness,weighting & calibration
+Data Quality & Missingness,measurement error models
+Data Quality & Missingness,record linkage
+Survey & Sampling Methodology,probability sampling designs
+Survey & Sampling Methodology,complex survey analysis
+Survey & Sampling Methodology,survey weighting
+Survey & Sampling Methodology,non-response adjustment
+Survey & Sampling Methodology,questionnaire design
+Experimental & Clinical Trials,clinical trials design
+Experimental & Clinical Trials,adaptive trial designs
+Experimental & Clinical Trials,group-sequential designs
+Experimental & Clinical Trials,dose-finding studies
+Experimental & Clinical Trials,cluster-randomised trials
+Experimental & Clinical Trials,N-of-1 trials
+Experimental & Clinical Trials,sample-size calculation
+Experimental & Clinical Trials,power analysis
+Domain-Specific Subfields,biostatistics
+Domain-Specific Subfields,epidemiology
+Domain-Specific Subfields,econometrics
+Domain-Specific Subfields,psychometrics
+Domain-Specific Subfields,educational measurement
+Domain-Specific Subfields,quantitative finance
+Domain-Specific Subfields,actuarial science
+Domain-Specific Subfields,quality control & reliability
+Domain-Specific Subfields,industrial statistics
+Domain-Specific Subfields,environmental statistics
+Domain-Specific Subfields,agricultural statistics
+Domain-Specific Subfields,sports analytics
+Domain-Specific Subfields,health economics
+Domain-Specific Subfields,pharmacometrics
+Domain-Specific Subfields,bioinformatics
+Domain-Specific Subfields,genomics statistics
+Domain-Specific Subfields,proteomics & metabolomics
+Domain-Specific Subfields,single-cell analysis
+Domain-Specific Subfields,neuroimaging statistics
+Domain-Specific Subfields,social network analysis
+Domain-Specific Subfields,text mining & NLP
+Domain-Specific Subfields,computer vision analytics
+Visualisation & Communication,data visualisation
+Visualisation & Communication,interactive graphics
+Visualisation & Communication,dashboard design
+Visualisation & Communication,geovisualisation
+Visualisation & Communication,statistical reporting
+Visualisation & Communication,reproducible research
+Data Engineering & Governance,data management
+Data Engineering & Governance,data cleaning
+Data Engineering & Governance,data integration
+Data Engineering & Governance,data governance & privacy
+Data Engineering & Governance,FAIR data principles
+Data Engineering & Governance,reproducible workflows
+Data Engineering & Governance,version control for data
