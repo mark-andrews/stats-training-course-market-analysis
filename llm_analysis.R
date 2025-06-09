@@ -1,8 +1,8 @@
 library(tidyverse)
 library(ellmer)
 
-# LLM <- "Llama" # or LLM <- 'ChatGPT'
-LLM <- "ChatGPT"
+LLM <- "Llama" # or LLM <- 'ChatGPT'
+#LLM <- "ChatGPT"
 
 # helper functions -------------------------------------------------------
 
@@ -125,11 +125,9 @@ write_results <- function(results, results_df, database, llm) {
 instructions <- readLines("instructions.md") |>
   str_c(collapse = "\n")
 
-N <- 330
-
-allstat_posts <- read_json_bz2("data/allstat_training_course_posts.json.bz2")[1:N]
-ncrm_posts <- read_json_bz2("data/ncrm_events.json.bz2")[1:N]
-tess_posts <- read_json_bz2("data/tess_courses.json.bz2")[1:N]
+allstat_posts <- read_json_bz2("data/allstat_training_course_posts.json.bz2")
+ncrm_posts <- read_json_bz2("data/ncrm_events.json.bz2")
+tess_posts <- read_json_bz2("data/tess_courses.json.bz2")
 
 
 # Process allstat posts ---------------------------------------------------
