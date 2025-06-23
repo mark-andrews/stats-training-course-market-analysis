@@ -84,3 +84,5 @@ topics <- allstat_df$topic |>
 
 client <- chat_openai(system_prompt = instructions, model = "o3")
 results <- process_topics(topics, client, backup_file = "tmp/tess_topics.Rds")
+
+saveRDS(results, file = "data/tess_topics.Rds")
