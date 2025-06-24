@@ -34,6 +34,7 @@ source(here('analysis/results_software.R'))
 source(here('analysis/results_online.R'))
 source(here('analysis/results_level.R'))
 source(here('analysis/results_provider.R'))
+source(here('analysis/results_duration.R'))
 ```
 
 In total, we analysed `r format(allstat_n + tess_n + ncrm_n, big.mark = ",", scientific = FALSE)` training courses descriptions:
@@ -321,6 +322,19 @@ delivery_df |>
   mutate(proportion = n/sum(n)) |> 
   slice_head(n=10) |> 
   ggplot(aes(x = reorder(delivery, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+## Duration
+
+```{r}
+duration_df |>
+  count(duration) |> 
+  arrange(desc(n)) |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(duration, n), y = proportion)) + geom_col() +
   coord_flip() + xlab(NULL) +
   theme_classic()
 ```

@@ -1,5 +1,6 @@
 library(tidyverse)
 library(lubridate)
+library(here)
 
 read_results <- function(db) {
   if (db == "ALLSTAT") {
@@ -13,7 +14,7 @@ read_results <- function(db) {
     date_parse_f <- lubridate::ymd_hms
   }
 
-  readRDS(RESULTS_FILE)$data_frame |>
+  readRDS(here(RESULTS_FILE))$data_frame |>
     select(duration, date) |>
     mutate(
       date = date_parse_f(date),
@@ -44,8 +45,8 @@ duration_df <-
          duration = str_replace_all(duration, '^3 ', 'three '),
          duration = str_replace_all(duration, '^4 ', 'four '),
          duration = str_replace_all(duration, '^5 ', 'five '))
-
-duration_df |> count(duration) |> arrange(desc(n))
-duration_df |> filter(year_group == 5) |> count(duration) |> arrange(desc(n))
-duration_df |> filter(year_group == 1) |> count(duration) |> arrange(desc(n))
+# 
+# duration_df |> count(duration) |> arrange(desc(n))
+# duration_df |> filter(year_group == 5) |> count(duration) |> arrange(desc(n))
+# duration_df |> filter(year_group == 1) |> count(duration) |> arrange(desc(n))
 
