@@ -1,0 +1,341 @@
+---
+title: "Trends and Topics of Statistics Training Courses"
+author: "Mark Andrews, Eirini Koutoumanou, Matt Castle"
+format: revealjs
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo=FALSE, warning = FALSE, message = FALSE)
+```
+
+## Introduction
+
+* The aim of this work is to analyse what is being taught, to whom, how, etc. in statistics training courses (usually CPD, advanced training for research).
+* Why this might be of general relevance for statistics education:
+  - Training courses reveal, and help close, teaching-workplace skills/knowledge gap
+  - They are reflect evolving or emerging methods and tools
+  - They are a principal means of teacher-training/upskilling
+
+## Databases
+
+```{r}
+library(here)
+library(tidyverse)
+
+allstat_n <- readRDS(here('data/allstat_training_course_posts_ollama.Rds'))$data_frame |> nrow()
+tess_n <- readRDS(here('data/tess_training_course_posts_llama_results.Rds'))$data_frame |> nrow()
+ncrm_n <- readRDS(here('data/ncrm_training_course_posts_llama_results.Rds'))$data_frame |> nrow()
+
+source(here('analysis/results_topics.R'))
+source(here('analysis/results_fields.R'))
+source(here('analysis/results_software.R'))
+source(here('analysis/results_online.R'))
+source(here('analysis/results_level.R'))
+source(here('analysis/results_provider.R'))
+```
+
+In total, we analysed `r format(allstat_n + tess_n + ncrm_n, big.mark = ",", scientific = FALSE)` training courses descriptions:
+
+- ALLSTAT mailing list: `r allstat_n` posts from 1998 to 2025
+- NCRM training courses and events database: `r ncrm_n` entries from 2003 to 2025
+- Elixir TeSS training course database: `r tess_n` entries from 2011 to 2025
+
+All of these descriptions were webscraped from the three websites using Python.
+
+## Extracted information
+
+For each training course description, we extracted
+
+- One line description of course
+- One term summary description of topic
+- Topic keywords
+- Intended audience (e.g. academic/research field) and level
+- Software
+- Duration, delivery method
+- Course provider
+
+## Extraction method
+
+* Information was extracted using a locally running large language model (LLM), Llama 3.3.
+* The LLM ran on a Linux workstation with a RTX A6000 GPU, 10,752 cuda cores and 48GB of VRAM.
+* The script was written in R using the `ellmer` package.
+* Approximately 2500 descriptions processed per day.
+* LLM API services provided by OpenAI could easily have been used (one line change in R code), approximately £50.
+
+## Topics
+
+```{r}
+topics_df |> top_categories() |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(value, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+
+## Topics (ALLSTAT)
+
+```{r}
+topics_df |>
+  filter(db == 'ALLSTAT') |> 
+  top_categories() |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(value, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+
+## Topics (NCRM)
+
+```{r}
+topics_df |>
+  filter(db == 'NCRM') |> 
+  top_categories() |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(value, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+## Topics (most recent quintile)
+
+```{r}
+topics_df |>
+  filter(year_group == 5) |> 
+  top_categories() |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(value, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+## Topics (least recent quintile)
+
+```{r}
+topics_df |>
+  filter(year_group == 1) |> 
+  top_categories() |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(value, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+## Intended academic/research field
+
+```{r}
+fields_df |>
+  count(field) |> 
+  arrange(desc(n)) |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(field, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+## Intended academic/research field (ALLSTAT)
+
+```{r}
+fields_df |>
+  filter(db == 'ALLSTAT') |> 
+  count(field) |> 
+  arrange(desc(n)) |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(field, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+## Intended academic/research field (NCRM)
+
+```{r}
+fields_df |>
+  filter(db == 'NCRM') |> 
+  count(field) |> 
+  arrange(desc(n)) |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(field, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+## Intended academic/research field (TESS)
+
+```{r}
+fields_df |>
+  filter(db == 'TESS') |> 
+  count(field) |> 
+  arrange(desc(n)) |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(field, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+## Intended level
+
+```{r}
+level_df |>
+  count(level) |> 
+  arrange(desc(n)) |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(level, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+## Software
+
+```{r}
+software_df |>
+  count(software) |> 
+  arrange(desc(n)) |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(software, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+## Software (year quintile 1, least recent)
+
+```{r}
+software_df |>
+  filter(year_group == 1) |> 
+  count(software) |> 
+  arrange(desc(n)) |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(software, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+<!-- ## Software (year quintile 2) -->
+
+<!-- ```{r} -->
+<!-- software_df |> -->
+<!--   filter(year_group == 2) |>  -->
+<!--   count(software) |>  -->
+<!--   arrange(desc(n)) |>  -->
+<!--   mutate(proportion = n/sum(n)) |>  -->
+<!--   slice_head(n=10) |>  -->
+<!--   ggplot(aes(x = reorder(software, n), y = proportion)) + geom_col() + -->
+<!--   coord_flip() + xlab(NULL) + -->
+<!--   theme_classic() -->
+<!-- ``` -->
+
+<!-- ## Software (year quintile 3) -->
+
+<!-- ```{r} -->
+<!-- software_df |> -->
+<!--   filter(year_group == 3) |>  -->
+<!--   count(software) |>  -->
+<!--   arrange(desc(n)) |>  -->
+<!--   mutate(proportion = n/sum(n)) |>  -->
+<!--   slice_head(n=10) |>  -->
+<!--   ggplot(aes(x = reorder(software, n), y = proportion)) + geom_col() + -->
+<!--   coord_flip() + xlab(NULL) + -->
+<!--   theme_classic() -->
+<!-- ``` -->
+
+<!-- ## Software (year quintile 4) -->
+
+<!-- ```{r} -->
+<!-- software_df |> -->
+<!--   filter(year_group == 4) |>  -->
+<!--   count(software) |>  -->
+<!--   arrange(desc(n)) |>  -->
+<!--   mutate(proportion = n/sum(n)) |>  -->
+<!--   slice_head(n=10) |>  -->
+<!--   ggplot(aes(x = reorder(software, n), y = proportion)) + geom_col() + -->
+<!--   coord_flip() + xlab(NULL) + -->
+<!--   theme_classic() -->
+<!-- ``` -->
+
+## Software (year quintile 5, most recent)
+
+```{r}
+software_df |>
+  filter(year_group == 5) |> 
+  count(software) |> 
+  arrange(desc(n)) |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(software, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+## Delivery method
+
+```{r}
+delivery_df |>
+  filter(delivery == 'online' | delivery == 'in person') |> 
+  # filter(year_group == 5) |> 
+  count(delivery) |> 
+  arrange(desc(n)) |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(delivery, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+## Delivery method (most recent quintile)
+
+```{r}
+delivery_df |>
+  filter(delivery == 'online' | delivery == 'in person') |> 
+  filter(year_group == 5) |> 
+  count(delivery) |> 
+  arrange(desc(n)) |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(delivery, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+## Delivery method (all but most recent quintile)
+
+```{r}
+delivery_df |>
+  filter(delivery == 'online' | delivery == 'in person') |> 
+  filter(year_group != 5) |> 
+  count(delivery) |> 
+  arrange(desc(n)) |> 
+  mutate(proportion = n/sum(n)) |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(delivery, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+
+## Provider
+
+```{r}
+provider_df |>
+  count(provider) |> 
+  arrange(desc(n)) |> 
+  mutate(proportion = n/sum(n)) |> 
+  filter(provider != 'not specified', provider != 'unknown') |> 
+  slice_head(n=10) |> 
+  ggplot(aes(x = reorder(provider, n), y = proportion)) + geom_col() +
+  coord_flip() + xlab(NULL) +
+  theme_classic()
+```
+

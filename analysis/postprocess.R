@@ -1,3 +1,5 @@
+library(tidyverse)
+
 ncrm_df <- readRDS("data/ncrm_training_course_posts_llama_results.Rds")$data_frame |>
   select(topic, field, level, software, delivery, duration, date) |>
   mutate(
@@ -52,6 +54,13 @@ xx <-
   group_by(year_group) |>
   nest(data = software)
 
+ncrm_df |>
+  mutate(year_group = ntile(year, 5)) |>
+  select(year, year_group) |> 
+  drop_na() |> 
+  summarise(year = mean(year), .by=year_group)
+
+
 
 top_software <- function(software) {
   unlist(software[[1]]) |>
@@ -103,3 +112,4 @@ ncrm_df |>
   enframe() |>
   count(value) |>
   arrange(desc(n))
+
