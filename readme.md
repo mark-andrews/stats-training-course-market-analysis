@@ -87,4 +87,5 @@ python tess.py get_course_details --course_list data/tess_course_list.json.bz2 -
 
 The script [`llm_analysis.R`](llm_analysis.R) provides code for the analysis of posts using an LLM such as ChatGPT or Llama.
 More information and guidance can be found in [this guide](https://mark-andrews.github.io/stats-training-course-market-analysis/llm_analysis_howto.html).
+A presentation on this analysis for the [UKCOTS 2025](https://www.ukcots.org) conference is [here](https://mark-andrews.github.io/stats-training-course-market-analysis/ukcots25.html).
 
